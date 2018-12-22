@@ -1,0 +1,186 @@
+﻿@using CapstoneProj3.Models
+@model List<CapstoneProj3.Models.Syll>
+
+@{
+    ViewBag.Title = "Details";
+
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Syll</h4>
+    <hr />
+    @foreach (var syl in Model)
+    {
+
+        <h2>ClassroomAndLabPolicies</h2>
+        <table class="table table-hover table-bordered">
+            <thead>
+                <tr>
+                    <th class="text-center">Description</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var qwe in syl.Lclp)
+                {
+                    <tr>
+                        <td><center>@qwe.CLP_desc</center> </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+        <hr />
+        <h2>Course Deliverable Outputs And Requirements</h2>
+        <table class="table table-hover table-bordered">
+            <thead>
+                <tr>
+                    <th class="text-center">Output Requirement</th>
+                    <th class="text-center">Output Requirement Description</th>
+                    <th class="text-center">Cilo</th>
+                    <th class="text-center">ToA</th>
+                </tr>
+            </thead>
+            <tbody id="codor">
+                @foreach (var qwe in syl.Lcodor)
+                {
+                    <tr>
+                        <td><center>@qwe.OutputReq</center> </td>
+                        <td><center>@qwe.OutputReqDesc</center> </td>
+                        <td><center>@qwe.Cilo_Add</center> </td>
+                        <td><center>@qwe.ToA</center> </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+        <hr />
+        <h2>Course Outcomes</h2>
+        <table class="table table-hover table-bordered">
+
+            <thead>
+
+                <tr>
+                    <th class="text-center">Code</th>
+                    <th class="text-center">Description</th>
+                    <th class="text-center">Core Value Activated</th>
+                    <th class="text-center">PO Activated</th>
+                    <th class="text-center">Domain of Level & Learning</th>
+                </tr>
+            </thead>
+            <tbody id="butco">
+                @foreach (var qwe in syl.Lco)
+                {
+                <tr>
+                    <td><center>@qwe.CO_Code</center> </td>
+                    <td><center>@qwe.CO_DESC</center> </td>
+                    <td><center>@qwe.CO_CVA</center> </td>
+                    <td><center>@qwe.CO_POactivated</center> </td>
+                    <td><center>@qwe.CO_DOLLevel</center> </td>
+                </tr>
+                }
+            </tbody>
+
+        </table>
+        <hr />
+
+
+        <h2>Learning Plan</h2>
+        <table class="table table-hover table-bordered">
+            <thead>
+                <tr>
+                    <th class="text-center">Outcome</th>
+                    <th class="text-center">Number of Hours</th>
+                    <th class="text-center">Topics</th>
+                    <th class="text-center">Activity L</th>
+                    <th class="text-center">Activity T</th>
+                    <th class="text-center">Asses</th>
+                </tr>
+            </thead>
+            <tbody id="lp">
+                @foreach (var qwe in syl.Llplan)
+                {
+                    <tr>
+                        <td><center>@qwe.LPlan_Outcome</center> </td>
+                        <td><center>@qwe.LPlan_No_hours</center> </td>
+                        <td><center>@qwe.LPlan_Topics</center> </td>
+                        <td><center>@qwe.activityL</center> </td>
+                        <td><center>@qwe.activityT</center> </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+        <hr />
+        <h2>Program Educational Objectives</h2>
+        <table class="table table-hover table-bordered">
+            <thead>
+                <tr>
+                    <th class="text-center">Code</th>
+                    <th class="text-center">Description</th>
+                    <th class="text-center">Core Value Activated</th>
+                </tr>
+            </thead>
+            <tbody id="peo">
+                @foreach (var qwe in syl.Lpeo)
+                {
+                    <tr>
+                        <td><center>@qwe.Peo_CODE</center> </td>
+                        <td><center>@qwe.Peo_DESC</center> </td>
+                        <td><center>@qwe.Peo_CVA</center> </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+        <hr />
+        <h2>Program Outcomes</h2>
+        <table class="table table-hover table-bordered">
+            <thead>
+                <tr>
+                    <th class="text-center">Code</th>
+                    <th class="text-center">Attribute</th>
+                    <th class="text-center">Description</th>
+                    <th class="text-center">Core Values ACtivated</th>
+                </tr>
+            </thead>
+            <tbody id="po">
+                @foreach (var qwe in syl.Lpo)
+                {
+                    <tr>
+                        <td><center>@qwe.PO_Code</center> </td>
+                        <td><center>@qwe.PO_attr</center> </td>
+                        <td><center>@qwe.PO_Desc</center> </td>
+                        <td><center>@qwe.PO_CVA</center> </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+        <hr />
+        <hr />
+        <h2>Grading System</h2>
+        <table class="table table-hover table-bordered">
+            <thead>
+                <tr>
+                    <th class="text-center">Outputs</th>
+                    <th class="text-center">Type</th>
+                    <th class="text-center">Weight</th>
+                </tr>
+            </thead>
+            <tbody id="gs">
+                @foreach (var qwe in syl.Lgs)
+                {
+                    <tr>
+                        <td><center>@qwe.GRD_outputs</center> </td>
+                        <td><center>@qwe.GRD_type</center> </td>
+                        <td><center>@qwe.GRD_weight</center> </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+        <hr />
+        <br /><br /><br /><br /><br /><br /><br />
+    
+    }
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

@@ -1,0 +1,53 @@
+﻿@using CapstoneProj3.Models
+@model CapstoneProj3.Models.DropDownCourse
+
+@{
+    ViewBag.Title = "pickCourse";
+    
+}
+
+<h2>pickCourse</h2>
+
+
+@using (Html.BeginForm("pickedCourse", "Syll", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+
+<div class="form-horizontal">
+    <h4>Course</h4>
+    <hr />
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+
+    @{
+        List<SelectListItem> listItems = new List<SelectListItem>();
+        //for (var i = 0; i < 5; i++)
+        foreach(var i in Model.lcr)
+        {
+            listItems.Add(new SelectListItem
+            {
+                Text = i.Course_Name,
+                Value = ""+i.Course_ID
+            });
+
+        }
+    }
+    @{ Course c = new Course();}
+    @Html.DropDownListFor(Model => Model.cr.Course_ID, listItems, "-- Select Status --")
+
+    <input type="submit" value="SubmitCourse" />
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" value="Create" class="btn btn-default" />
+        </div>
+    </div>
+</div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

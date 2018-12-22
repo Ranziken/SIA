@@ -1,0 +1,1575 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="DMISModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Class">
+          <Key>
+            <PropertyRef Name="Class_ID" />
+          </Key>
+          <Property Name="Class_ID" Type="int" Nullable="false" />
+          <Property Name="User_ID" Type="int" Nullable="false" />
+          <Property Name="Room_ID" Type="int" Nullable="false" />
+          <Property Name="Course_ID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ClassroomAndLabPolicies">
+          <Key>
+            <PropertyRef Name="CLP_Id" />
+          </Key>
+          <Property Name="CLP_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CLP_desc" Type="varchar" MaxLength="255" />
+          <Property Name="Syllabus_ID" Type="int" />
+        </EntityType>
+        <EntityType Name="Course">
+          <Key>
+            <PropertyRef Name="Course_ID" />
+          </Key>
+          <Property Name="Course_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Course_Name" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="Course_Dept" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="Course_Credit" Type="int" Nullable="false" />
+          <Property Name="Course_Equivalent" Type="varchar" MaxLength="255" />
+          <Property Name="Course_Pre_Req" Type="varchar" MaxLength="255" />
+          <Property Name="Course_Co_Req" Type="varchar" MaxLength="255" />
+          <Property Name="Course_Desc" Type="text" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CourseDeliverableOutputsAndRequirements">
+          <Key>
+            <PropertyRef Name="CDOR_Id" />
+          </Key>
+          <Property Name="CDOR_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="OutputReq" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="OutputReqDesc" Type="text" Nullable="false" />
+          <Property Name="Cilo_Add" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="ToA" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Syllabus_ID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CourseOutcomes">
+          <Key>
+            <PropertyRef Name="CO_ID" />
+          </Key>
+          <Property Name="CO_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CO_Code" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="CO_DESC" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="CO_CVA" Type="varchar" MaxLength="50" />
+          <Property Name="CO_POactivated" Type="char" MaxLength="10" />
+          <Property Name="CO_DOLLevel" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Syllabus_ID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="GradingSystem">
+          <Key>
+            <PropertyRef Name="GRD_Id" />
+          </Key>
+          <Property Name="GRD_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="GRD_outputs" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="GRD_type" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="GRD_weight" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Syllabus_ID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="LearningPlan">
+          <Key>
+            <PropertyRef Name="LPlan_ID" />
+          </Key>
+          <Property Name="LPlan_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="LPlan_Outcome" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="LPlan_No_hours" Type="int" Nullable="false" />
+          <Property Name="LPlan_Topics" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="LPlan_Asses" Type="varchar" MaxLength="255" />
+          <Property Name="Syllabus_ID" Type="int" Nullable="false" />
+          <Property Name="activityT" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="activityL" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="PEO">
+          <Key>
+            <PropertyRef Name="Peo_ID" />
+          </Key>
+          <Property Name="Peo_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Peo_CODE" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="Peo_DESC" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="Peo_CVA" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="Syllabus_ID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ProgramOutcome">
+          <Key>
+            <PropertyRef Name="PO_Id" />
+          </Key>
+          <Property Name="PO_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PO_Code" Type="varchar" MaxLength="50" />
+          <Property Name="PO_attr" Type="varchar" MaxLength="50" />
+          <Property Name="PO_Desc" Type="varchar" MaxLength="255" />
+          <Property Name="PO_CVA" Type="varchar" MaxLength="50" />
+          <Property Name="Syllabus_ID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Revision">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Version" Type="float" Nullable="false" />
+          <Property Name="Items" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="User_ID" Type="int" Nullable="false" />
+          <Property Name="Rev_Date" Type="date" />
+          <Property Name="App_Date" Type="date" />
+          <Property Name="Syllabus_ID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Room">
+          <Key>
+            <PropertyRef Name="Room_ID" />
+          </Key>
+          <Property Name="Room_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Sched_ID" Type="int" Nullable="false" />
+          <Property Name="Room_Name/No" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Room_Bldg" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Room_Campus" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Rubrics">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="outstanding" Type="varchar" MaxLength="255" />
+          <Property Name="competent" Type="varchar" MaxLength="255" />
+          <Property Name="marginal" Type="varchar" MaxLength="255" />
+          <Property Name="notAcceptable" Type="varchar" MaxLength="255" />
+          <Property Name="criteria" Type="varchar" MaxLength="255" />
+          <Property Name="Syllabus_ID" Type="int" />
+        </EntityType>
+        <EntityType Name="Schedule">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="Time_S" Type="float" />
+          <Property Name="Time_E" Type="float" />
+          <Property Name="Day" Type="varchar" MaxLength="50" />
+          <Property Name="Room_ID" Type="int" />
+        </EntityType>
+        <EntityType Name="SciVid">
+          <Key>
+            <PropertyRef Name="SciVid_ID" />
+          </Key>
+          <Property Name="SciVid_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Core_Val" Type="varchar" MaxLength="50" />
+          <Property Name="Attributes" Type="varchar" MaxLength="255" />
+          <Property Name="Syllabus_ID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Syllab">
+          <Key>
+            <PropertyRef Name="Syllabus_ID" />
+          </Key>
+          <Property Name="Syllabus_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Course_ID" Type="int" />
+          <Property Name="User_ID" Type="int" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="User_ID" />
+          </Key>
+          <Property Name="User_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ID_Num" Type="int" Nullable="false" />
+          <Property Name="Password" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Role" Type="nchar" MaxLength="10" Nullable="false" />
+          <Property Name="fName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="lName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="mName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Cons_Time" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Contact_info" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_Class_Course">
+          <End Role="Course" Type="Self.Course" Multiplicity="1" />
+          <End Role="Class" Type="Self.Class" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Course">
+              <PropertyRef Name="Course_ID" />
+            </Principal>
+            <Dependent Role="Class">
+              <PropertyRef Name="Course_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Class_Room">
+          <End Role="Room" Type="Self.Room" Multiplicity="1" />
+          <End Role="Class" Type="Self.Class" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Room">
+              <PropertyRef Name="Room_ID" />
+            </Principal>
+            <Dependent Role="Class">
+              <PropertyRef Name="Room_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Class_User">
+          <End Role="User" Type="Self.User" Multiplicity="1" />
+          <End Role="Class" Type="Self.Class" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="User_ID" />
+            </Principal>
+            <Dependent Role="Class">
+              <PropertyRef Name="User_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ClassroomAndLabPolicies_ClassroomAndLabPolicies">
+          <End Role="Syllab" Type="Self.Syllab" Multiplicity="0..1" />
+          <End Role="ClassroomAndLabPolicies" Type="Self.ClassroomAndLabPolicies" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Syllab">
+              <PropertyRef Name="Syllabus_ID" />
+            </Principal>
+            <Dependent Role="ClassroomAndLabPolicies">
+              <PropertyRef Name="Syllabus_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CourseDeliverableOutputsAndRequirements_CourseDeliverableOutputsAndRequirements">
+          <End Role="Syllab" Type="Self.Syllab" Multiplicity="1" />
+          <End Role="CourseDeliverableOutputsAndRequirements" Type="Self.CourseDeliverableOutputsAndRequirements" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Syllab">
+              <PropertyRef Name="Syllabus_ID" />
+            </Principal>
+            <Dependent Role="CourseDeliverableOutputsAndRequirements">
+              <PropertyRef Name="Syllabus_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CourseOutcomes_Syllab">
+          <End Role="Syllab" Type="Self.Syllab" Multiplicity="1" />
+          <End Role="CourseOutcomes" Type="Self.CourseOutcomes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Syllab">
+              <PropertyRef Name="Syllabus_ID" />
+            </Principal>
+            <Dependent Role="CourseOutcomes">
+              <PropertyRef Name="Syllabus_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_GradingSystem_Syllab">
+          <End Role="Syllab" Type="Self.Syllab" Multiplicity="1" />
+          <End Role="GradingSystem" Type="Self.GradingSystem" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Syllab">
+              <PropertyRef Name="Syllabus_ID" />
+            </Principal>
+            <Dependent Role="GradingSystem">
+              <PropertyRef Name="Syllabus_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_LearningPlan_Syllab">
+          <End Role="Syllab" Type="Self.Syllab" Multiplicity="1" />
+          <End Role="LearningPlan" Type="Self.LearningPlan" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Syllab">
+              <PropertyRef Name="Syllabus_ID" />
+            </Principal>
+            <Dependent Role="LearningPlan">
+              <PropertyRef Name="Syllabus_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PEO_Syllab">
+          <End Role="Syllab" Type="Self.Syllab" Multiplicity="1" />
+          <End Role="PEO" Type="Self.PEO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Syllab">
+              <PropertyRef Name="Syllabus_ID" />
+            </Principal>
+            <Dependent Role="PEO">
+              <PropertyRef Name="Syllabus_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ProgramOutcome_Syllab">
+          <End Role="Syllab" Type="Self.Syllab" Multiplicity="1" />
+          <End Role="ProgramOutcome" Type="Self.ProgramOutcome" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Syllab">
+              <PropertyRef Name="Syllabus_ID" />
+            </Principal>
+            <Dependent Role="ProgramOutcome">
+              <PropertyRef Name="Syllabus_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Revision_Revision">
+          <End Role="Revision" Type="Self.Revision" Multiplicity="1" />
+          <End Role="Revision1" Type="Self.Revision" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Revision">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Revision1">
+              <PropertyRef Name="ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Revision_Revision1">
+          <End Role="Revision" Type="Self.Revision" Multiplicity="1" />
+          <End Role="Revision1" Type="Self.Revision" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Revision">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Revision1">
+              <PropertyRef Name="ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Revision_User">
+          <End Role="User" Type="Self.User" Multiplicity="1" />
+          <End Role="Revision" Type="Self.Revision" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="User_ID" />
+            </Principal>
+            <Dependent Role="Revision">
+              <PropertyRef Name="User_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Room_Room">
+          <End Role="Room" Type="Self.Room" Multiplicity="1" />
+          <End Role="Room1" Type="Self.Room" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Room">
+              <PropertyRef Name="Room_ID" />
+            </Principal>
+            <Dependent Role="Room1">
+              <PropertyRef Name="Room_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Room_Room1">
+          <End Role="Room" Type="Self.Room" Multiplicity="1" />
+          <End Role="Room1" Type="Self.Room" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Room">
+              <PropertyRef Name="Room_ID" />
+            </Principal>
+            <Dependent Role="Room1">
+              <PropertyRef Name="Room_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Rubrics_Syllab">
+          <End Role="Syllab" Type="Self.Syllab" Multiplicity="0..1" />
+          <End Role="Rubrics" Type="Self.Rubrics" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Syllab">
+              <PropertyRef Name="Syllabus_ID" />
+            </Principal>
+            <Dependent Role="Rubrics">
+              <PropertyRef Name="Syllabus_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Schedule_Room">
+          <End Role="Room" Type="Self.Room" Multiplicity="0..1" />
+          <End Role="Schedule" Type="Self.Schedule" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Room">
+              <PropertyRef Name="Room_ID" />
+            </Principal>
+            <Dependent Role="Schedule">
+              <PropertyRef Name="Room_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SciVid_SciVid">
+          <End Role="SciVid" Type="Self.SciVid" Multiplicity="1" />
+          <End Role="SciVid1" Type="Self.SciVid" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="SciVid">
+              <PropertyRef Name="SciVid_ID" />
+            </Principal>
+            <Dependent Role="SciVid1">
+              <PropertyRef Name="SciVid_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Syllabus_Course">
+          <End Role="Course" Type="Self.Course" Multiplicity="0..1" />
+          <End Role="Syllab" Type="Self.Syllab" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Course">
+              <PropertyRef Name="Course_ID" />
+            </Principal>
+            <Dependent Role="Syllab">
+              <PropertyRef Name="Course_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Syllabus_User">
+          <End Role="User" Type="Self.User" Multiplicity="0..1" />
+          <End Role="Syllab" Type="Self.Syllab" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="User_ID" />
+            </Principal>
+            <Dependent Role="Syllab">
+              <PropertyRef Name="User_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_User_User">
+          <End Role="User" Type="Self.User" Multiplicity="1" />
+          <End Role="User1" Type="Self.User" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="User_ID" />
+            </Principal>
+            <Dependent Role="User1">
+              <PropertyRef Name="User_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="DMISModelStoreContainer">
+          <EntitySet Name="Class" EntityType="Self.Class" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ClassroomAndLabPolicies" EntityType="Self.ClassroomAndLabPolicies" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Course" EntityType="Self.Course" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CourseDeliverableOutputsAndRequirements" EntityType="Self.CourseDeliverableOutputsAndRequirements" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CourseOutcomes" EntityType="Self.CourseOutcomes" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="GradingSystem" EntityType="Self.GradingSystem" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="LearningPlan" EntityType="Self.LearningPlan" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PEO" EntityType="Self.PEO" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ProgramOutcome" EntityType="Self.ProgramOutcome" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Revision" EntityType="Self.Revision" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Room" EntityType="Self.Room" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Rubrics" EntityType="Self.Rubrics" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Schedule" EntityType="Self.Schedule" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SciVid" EntityType="Self.SciVid" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Syllab" EntityType="Self.Syllab" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="User" EntityType="Self.User" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Class_Course" Association="Self.FK_Class_Course">
+            <End Role="Course" EntitySet="Course" />
+            <End Role="Class" EntitySet="Class" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Class_Room" Association="Self.FK_Class_Room">
+            <End Role="Room" EntitySet="Room" />
+            <End Role="Class" EntitySet="Class" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Class_User" Association="Self.FK_Class_User">
+            <End Role="User" EntitySet="User" />
+            <End Role="Class" EntitySet="Class" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ClassroomAndLabPolicies_ClassroomAndLabPolicies" Association="Self.FK_ClassroomAndLabPolicies_ClassroomAndLabPolicies">
+            <End Role="Syllab" EntitySet="Syllab" />
+            <End Role="ClassroomAndLabPolicies" EntitySet="ClassroomAndLabPolicies" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CourseDeliverableOutputsAndRequirements_CourseDeliverableOutputsAndRequirements" Association="Self.FK_CourseDeliverableOutputsAndRequirements_CourseDeliverableOutputsAndRequirements">
+            <End Role="Syllab" EntitySet="Syllab" />
+            <End Role="CourseDeliverableOutputsAndRequirements" EntitySet="CourseDeliverableOutputsAndRequirements" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CourseOutcomes_Syllab" Association="Self.FK_CourseOutcomes_Syllab">
+            <End Role="Syllab" EntitySet="Syllab" />
+            <End Role="CourseOutcomes" EntitySet="CourseOutcomes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_GradingSystem_Syllab" Association="Self.FK_GradingSystem_Syllab">
+            <End Role="Syllab" EntitySet="Syllab" />
+            <End Role="GradingSystem" EntitySet="GradingSystem" />
+          </AssociationSet>
+          <AssociationSet Name="FK_LearningPlan_Syllab" Association="Self.FK_LearningPlan_Syllab">
+            <End Role="Syllab" EntitySet="Syllab" />
+            <End Role="LearningPlan" EntitySet="LearningPlan" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PEO_Syllab" Association="Self.FK_PEO_Syllab">
+            <End Role="Syllab" EntitySet="Syllab" />
+            <End Role="PEO" EntitySet="PEO" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ProgramOutcome_Syllab" Association="Self.FK_ProgramOutcome_Syllab">
+            <End Role="Syllab" EntitySet="Syllab" />
+            <End Role="ProgramOutcome" EntitySet="ProgramOutcome" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Revision_Revision" Association="Self.FK_Revision_Revision">
+            <End Role="Revision" EntitySet="Revision" />
+            <End Role="Revision1" EntitySet="Revision" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Revision_Revision1" Association="Self.FK_Revision_Revision1">
+            <End Role="Revision" EntitySet="Revision" />
+            <End Role="Revision1" EntitySet="Revision" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Revision_User" Association="Self.FK_Revision_User">
+            <End Role="User" EntitySet="User" />
+            <End Role="Revision" EntitySet="Revision" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Room_Room" Association="Self.FK_Room_Room">
+            <End Role="Room" EntitySet="Room" />
+            <End Role="Room1" EntitySet="Room" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Room_Room1" Association="Self.FK_Room_Room1">
+            <End Role="Room" EntitySet="Room" />
+            <End Role="Room1" EntitySet="Room" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Rubrics_Syllab" Association="Self.FK_Rubrics_Syllab">
+            <End Role="Syllab" EntitySet="Syllab" />
+            <End Role="Rubrics" EntitySet="Rubrics" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Schedule_Room" Association="Self.FK_Schedule_Room">
+            <End Role="Room" EntitySet="Room" />
+            <End Role="Schedule" EntitySet="Schedule" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SciVid_SciVid" Association="Self.FK_SciVid_SciVid">
+            <End Role="SciVid" EntitySet="SciVid" />
+            <End Role="SciVid1" EntitySet="SciVid" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Syllabus_Course" Association="Self.FK_Syllabus_Course">
+            <End Role="Course" EntitySet="Course" />
+            <End Role="Syllab" EntitySet="Syllab" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Syllabus_User" Association="Self.FK_Syllabus_User">
+            <End Role="User" EntitySet="User" />
+            <End Role="Syllab" EntitySet="Syllab" />
+          </AssociationSet>
+          <AssociationSet Name="FK_User_User" Association="Self.FK_User_User">
+            <End Role="User" EntitySet="User" />
+            <End Role="User1" EntitySet="User" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="DMISModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Class">
+          <Key>
+            <PropertyRef Name="Class_ID" />
+          </Key>
+          <Property Name="Class_ID" Type="Int32" Nullable="false" />
+          <Property Name="User_ID" Type="Int32" Nullable="false" />
+          <Property Name="Room_ID" Type="Int32" Nullable="false" />
+          <Property Name="Course_ID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Course" Relationship="Self.FK_Class_Course" FromRole="Class" ToRole="Course" />
+          <NavigationProperty Name="Room" Relationship="Self.FK_Class_Room" FromRole="Class" ToRole="Room" />
+          <NavigationProperty Name="User" Relationship="Self.FK_Class_User" FromRole="Class" ToRole="User" />
+        </EntityType>
+        <EntityType Name="ClassroomAndLabPolicy">
+          <Key>
+            <PropertyRef Name="CLP_Id" />
+          </Key>
+          <Property Name="CLP_Id" Type="Int32" Nullable="false" />
+          <Property Name="CLP_desc" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Syllabus_ID" Type="Int32" />
+          <NavigationProperty Name="Syllab" Relationship="Self.FK_ClassroomAndLabPolicies_Syllabus" FromRole="ClassroomAndLabPolicies" ToRole="Syllab" />
+          <NavigationProperty Name="ClassroomAndLabPolicies1" Relationship="DMISModel.FK_ClassroomAndLabPolicies_ClassroomAndLabPolicies" FromRole="ClassroomAndLabPolicy" ToRole="ClassroomAndLabPolicy1" />
+          <NavigationProperty Name="ClassroomAndLabPolicy1" Relationship="DMISModel.FK_ClassroomAndLabPolicies_ClassroomAndLabPolicies" FromRole="ClassroomAndLabPolicy1" ToRole="ClassroomAndLabPolicy" />
+        </EntityType>
+        <EntityType Name="Course">
+          <Key>
+            <PropertyRef Name="Course_ID" />
+          </Key>
+          <Property Name="Course_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Course_Name" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Course_Dept" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Course_Credit" Type="Int32" Nullable="false" />
+          <Property Name="Course_Equivalent" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Course_Pre_Req" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Course_Co_Req" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Course_Desc" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Classes" Relationship="Self.FK_Class_Course" FromRole="Course" ToRole="Class" />
+          <NavigationProperty Name="Syllabs" Relationship="Self.FK_Syllabus_Course" FromRole="Course" ToRole="Syllab" />
+        </EntityType>
+        <EntityType Name="CourseDeliverableOutputsAndRequirement">
+          <Key>
+            <PropertyRef Name="CDOR_Id" />
+          </Key>
+          <Property Name="CDOR_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="OutputReq" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="OutputReqDesc" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Cilo_Add" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ToA" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Syllabus_ID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="CourseDeliverableOutputsAndRequirements1" Relationship="Self.FK_CourseDeliverableOutputsAndRequirements_CourseDeliverableOutputsAndRequirements" FromRole="CourseDeliverableOutputsAndRequirements" ToRole="CourseDeliverableOutputsAndRequirements1" />
+          <NavigationProperty Name="CourseDeliverableOutputsAndRequirement1" Relationship="Self.FK_CourseDeliverableOutputsAndRequirements_CourseDeliverableOutputsAndRequirements" FromRole="CourseDeliverableOutputsAndRequirements1" ToRole="CourseDeliverableOutputsAndRequirements" />
+          <NavigationProperty Name="CourseDeliverableOutputsAndRequirements11" Relationship="Self.FK_CourseDeliverableOutputsAndRequirements_CourseDeliverableOutputsAndRequirements1" FromRole="CourseDeliverableOutputsAndRequirements" ToRole="CourseDeliverableOutputsAndRequirements1" />
+          <NavigationProperty Name="CourseDeliverableOutputsAndRequirement2" Relationship="Self.FK_CourseDeliverableOutputsAndRequirements_CourseDeliverableOutputsAndRequirements1" FromRole="CourseDeliverableOutputsAndRequirements1" ToRole="CourseDeliverableOutputsAndRequirements" />
+          <NavigationProperty Name="Syllab" Relationship="Self.FK_CourseDeliverableOutputsAndRequirements_Syllabus" FromRole="CourseDeliverableOutputsAndRequirements" ToRole="Syllab" />
+        </EntityType>
+        <EntityType Name="CourseOutcome">
+          <Key>
+            <PropertyRef Name="CO_ID" />
+          </Key>
+          <Property Name="CO_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CO_Code" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CO_DESC" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CO_CVA" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CO_POactivated" Type="String" MaxLength="10" FixedLength="true" Unicode="false" />
+          <Property Name="CO_DOLLevel" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Syllabus_ID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="CourseOutcomes1" Relationship="Self.FK_CourseOutcomes_CourseOutcomes" FromRole="CourseOutcomes" ToRole="CourseOutcomes1" />
+          <NavigationProperty Name="CourseOutcome1" Relationship="Self.FK_CourseOutcomes_CourseOutcomes" FromRole="CourseOutcomes1" ToRole="CourseOutcomes" />
+          <NavigationProperty Name="CourseOutcomes11" Relationship="Self.FK_CourseOutcomes_CourseOutcomes1" FromRole="CourseOutcomes" ToRole="CourseOutcomes1" />
+          <NavigationProperty Name="CourseOutcome2" Relationship="Self.FK_CourseOutcomes_CourseOutcomes1" FromRole="CourseOutcomes1" ToRole="CourseOutcomes" />
+          <NavigationProperty Name="CourseOutcomes12" Relationship="Self.FK_CourseOutcomes_CourseOutcomes2" FromRole="CourseOutcomes" ToRole="CourseOutcomes1" />
+          <NavigationProperty Name="CourseOutcome3" Relationship="Self.FK_CourseOutcomes_CourseOutcomes2" FromRole="CourseOutcomes1" ToRole="CourseOutcomes" />
+          <NavigationProperty Name="Syllab" Relationship="Self.FK_CourseOutcomes_Syllabus" FromRole="CourseOutcomes" ToRole="Syllab" />
+        </EntityType>
+        <EntityType Name="GradingSystem">
+          <Key>
+            <PropertyRef Name="GRD_Id" />
+          </Key>
+          <Property Name="GRD_Id" Type="Int32" Nullable="false" />
+          <Property Name="GRD_outputs" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="GRD_type" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="GRD_weight" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Syllabus_ID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="GradingSystem1" Relationship="Self.FK_GradingSystem_GradingSystem" FromRole="GradingSystem" ToRole="GradingSystem1" />
+          <NavigationProperty Name="GradingSystem2" Relationship="Self.FK_GradingSystem_GradingSystem" FromRole="GradingSystem1" ToRole="GradingSystem" />
+          <NavigationProperty Name="Syllab" Relationship="Self.FK_GradingSystem_Syllabus" FromRole="GradingSystem" ToRole="Syllab" />
+        </EntityType>
+        <EntityType Name="LearningPlan">
+          <Key>
+            <PropertyRef Name="LPlan_ID" />
+          </Key>
+          <Property Name="LPlan_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="LPlan_Outcome" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="LPlan_No_hours" Type="Int32" Nullable="false" />
+          <Property Name="LPlan_Topics" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="LPlan_Asses" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Syllabus_ID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="LearningPlan1" Relationship="Self.FK_LearningPlan_LearningPlan" FromRole="LearningPlan" ToRole="LearningPlan1" />
+          <NavigationProperty Name="LearningPlan2" Relationship="Self.FK_LearningPlan_LearningPlan" FromRole="LearningPlan1" ToRole="LearningPlan" />
+          <NavigationProperty Name="Syllab" Relationship="Self.FK_LearningPlan_Syllabus" FromRole="LearningPlan" ToRole="Syllab" />
+          <Property Name="activityT" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="activityL" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="PEO">
+          <Key>
+            <PropertyRef Name="Peo_ID" />
+          </Key>
+          <Property Name="Peo_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Peo_CODE" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Peo_DESC" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Peo_CVA" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Syllabus_ID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="PEO1" Relationship="Self.FK_PEO_PEO" FromRole="PEO" ToRole="PEO1" />
+          <NavigationProperty Name="PEO2" Relationship="Self.FK_PEO_PEO" FromRole="PEO1" ToRole="PEO" />
+          <NavigationProperty Name="PEO11" Relationship="Self.FK_PEO_PEO1" FromRole="PEO" ToRole="PEO1" />
+          <NavigationProperty Name="PEO3" Relationship="Self.FK_PEO_PEO1" FromRole="PEO1" ToRole="PEO" />
+          <NavigationProperty Name="Syllab" Relationship="Self.FK_PEO_Syllabus" FromRole="PEO" ToRole="Syllab" />
+        </EntityType>
+        <EntityType Name="ProgramOutcome">
+          <Key>
+            <PropertyRef Name="PO_Id" />
+          </Key>
+          <Property Name="PO_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PO_Code" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="PO_attr" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="PO_Desc" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="PO_CVA" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Syllabus_ID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="ProgramOutcome1" Relationship="Self.FK_ProgramOutcome_ProgramOutcome" FromRole="ProgramOutcome" ToRole="ProgramOutcome1" />
+          <NavigationProperty Name="ProgramOutcome2" Relationship="Self.FK_ProgramOutcome_ProgramOutcome" FromRole="ProgramOutcome1" ToRole="ProgramOutcome" />
+          <NavigationProperty Name="ProgramOutcome11" Relationship="Self.FK_ProgramOutcome_ProgramOutcome1" FromRole="ProgramOutcome" ToRole="ProgramOutcome1" />
+          <NavigationProperty Name="ProgramOutcome3" Relationship="Self.FK_ProgramOutcome_ProgramOutcome1" FromRole="ProgramOutcome1" ToRole="ProgramOutcome" />
+          <NavigationProperty Name="Syllab" Relationship="Self.FK_ProgramOutcome_Syllabus" FromRole="ProgramOutcome" ToRole="Syllab" />
+        </EntityType>
+        <EntityType Name="Revision">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Version" Type="Double" Nullable="false" />
+          <Property Name="Items" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="User_ID" Type="Int32" Nullable="false" />
+          <Property Name="Rev_Date" Type="DateTime" Precision="0" />
+          <Property Name="App_Date" Type="DateTime" Precision="0" />
+          <Property Name="Syllabus_ID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Revision1" Relationship="Self.FK_Revision_Revision" FromRole="Revision" ToRole="Revision1" />
+          <NavigationProperty Name="Revision2" Relationship="Self.FK_Revision_Revision" FromRole="Revision1" ToRole="Revision" />
+          <NavigationProperty Name="Revision11" Relationship="Self.FK_Revision_Revision1" FromRole="Revision" ToRole="Revision1" />
+          <NavigationProperty Name="Revision3" Relationship="Self.FK_Revision_Revision1" FromRole="Revision1" ToRole="Revision" />
+          <NavigationProperty Name="Syllab" Relationship="Self.FK_Revision_Syllabus" FromRole="Revision" ToRole="Syllab" />
+          <NavigationProperty Name="User" Relationship="Self.FK_Revision_User" FromRole="Revision" ToRole="User" />
+        </EntityType>
+        <EntityType Name="Room">
+          <Key>
+            <PropertyRef Name="Room_ID" />
+          </Key>
+          <Property Name="Room_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Sched_ID" Type="Int32" Nullable="false" />
+          <Property Name="Room_Name_No" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Room_Bldg" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Room_Campus" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Classes" Relationship="Self.FK_Class_Room" FromRole="Room" ToRole="Class" />
+          <NavigationProperty Name="Room1" Relationship="Self.FK_Room_Room" FromRole="Room" ToRole="Room1" />
+          <NavigationProperty Name="Room2" Relationship="Self.FK_Room_Room" FromRole="Room1" ToRole="Room" />
+          <NavigationProperty Name="Room11" Relationship="Self.FK_Room_Room1" FromRole="Room" ToRole="Room1" />
+          <NavigationProperty Name="Room3" Relationship="Self.FK_Room_Room1" FromRole="Room1" ToRole="Room" />
+          <NavigationProperty Name="Schedules" Relationship="Self.FK_Schedule_Room" FromRole="Room" ToRole="Schedule" />
+        </EntityType>
+        <EntityType Name="Schedule">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="Time_S" Type="Double" />
+          <Property Name="Time_E" Type="Double" />
+          <Property Name="Day" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Room_ID" Type="Int32" />
+          <NavigationProperty Name="Room" Relationship="Self.FK_Schedule_Room" FromRole="Schedule" ToRole="Room" />
+        </EntityType>
+        <EntityType Name="SciVid">
+          <Key>
+            <PropertyRef Name="SciVid_ID" />
+          </Key>
+          <Property Name="SciVid_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Core_Val" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Attributes" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Syllabus_ID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="SciVid1" Relationship="Self.FK_SciVid_SciVid" FromRole="SciVid" ToRole="SciVid1" />
+          <NavigationProperty Name="SciVid2" Relationship="Self.FK_SciVid_SciVid" FromRole="SciVid1" ToRole="SciVid" />
+          <NavigationProperty Name="Syllab" Relationship="Self.FK_SciVid_Syllabus" FromRole="SciVid" ToRole="Syllab" />
+        </EntityType>
+        <EntityType Name="Syllab">
+          <Key>
+            <PropertyRef Name="Syllabus_ID" />
+          </Key>
+          <Property Name="Syllabus_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Course_ID" Type="Int32" />
+          <Property Name="User_ID" Type="Int32" />
+          <NavigationProperty Name="ClassroomAndLabPolicies" Relationship="Self.FK_ClassroomAndLabPolicies_Syllabus" FromRole="Syllab" ToRole="ClassroomAndLabPolicies" />
+          <NavigationProperty Name="Course" Relationship="Self.FK_Syllabus_Course" FromRole="Syllab" ToRole="Course" />
+          <NavigationProperty Name="CourseDeliverableOutputsAndRequirements" Relationship="Self.FK_CourseDeliverableOutputsAndRequirements_Syllabus" FromRole="Syllab" ToRole="CourseDeliverableOutputsAndRequirements" />
+          <NavigationProperty Name="CourseOutcomes" Relationship="Self.FK_CourseOutcomes_Syllabus" FromRole="Syllab" ToRole="CourseOutcomes" />
+          <NavigationProperty Name="GradingSystems" Relationship="Self.FK_GradingSystem_Syllabus" FromRole="Syllab" ToRole="GradingSystem" />
+          <NavigationProperty Name="LearningPlans" Relationship="Self.FK_LearningPlan_Syllabus" FromRole="Syllab" ToRole="LearningPlan" />
+          <NavigationProperty Name="PEOs" Relationship="Self.FK_PEO_Syllabus" FromRole="Syllab" ToRole="PEO" />
+          <NavigationProperty Name="ProgramOutcomes" Relationship="Self.FK_ProgramOutcome_Syllabus" FromRole="Syllab" ToRole="ProgramOutcome" />
+          <NavigationProperty Name="Revisions" Relationship="Self.FK_Revision_Syllabus" FromRole="Syllab" ToRole="Revision" />
+          <NavigationProperty Name="SciVids" Relationship="Self.FK_SciVid_Syllabus" FromRole="Syllab" ToRole="SciVid" />
+          <NavigationProperty Name="User" Relationship="Self.FK_Syllabus_User" FromRole="Syllab" ToRole="User" />
+          <NavigationProperty Name="Rubrics" Relationship="DMISModel.FK_Rubrics_Syllab" FromRole="Syllab" ToRole="Rubric" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="User_ID" />
+          </Key>
+          <Property Name="User_ID" Type="Int32" Nullable="false" />
+          <Property Name="ID_Num" Type="Int32" Nullable="false" />
+          <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Role" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="fName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="lName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="mName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Cons_Time" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Contact_info" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Classes" Relationship="Self.FK_Class_User" FromRole="User" ToRole="Class" />
+          <NavigationProperty Name="Revisions" Relationship="Self.FK_Revision_User" FromRole="User" ToRole="Revision" />
+          <NavigationProperty Name="Syllabs" Relationship="Self.FK_Syllabus_User" FromRole="User" ToRole="Syllab" />
+          <NavigationProperty Name="User1" Relationship="Self.FK_User_User" FromRole="User" ToRole="User1" />
+          <NavigationProperty Name="User2" Relationship="Self.FK_User_User" FromRole="User1" ToRole="User" />
+        </EntityType>
+        <Association Name="FK_Class_Course">
+          <End Role="Course" Type="Self.Course" Multiplicity="1" />
+          <End Role="Class" Type="Self.Class" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Course">
+              <PropertyRef Name="Course_ID" />
+            </Principal>
+            <Dependent Role="Class">
+              <PropertyRef Name="Course_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Class_Room">
+          <End Role="Room" Type="Self.Room" Multiplicity="1" />
+          <End Role="Class" Type="Self.Class" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Room">
+              <PropertyRef Name="Room_ID" />
+            </Principal>
+            <Dependent Role="Class">
+              <PropertyRef Name="Room_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Class_User">
+          <End Role="User" Type="Self.User" Multiplicity="1" />
+          <End Role="Class" Type="Self.Class" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="User_ID" />
+            </Principal>
+            <Dependent Role="Class">
+              <PropertyRef Name="User_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ClassroomAndLabPolicies_Syllabus">
+          <End Role="Syllab" Type="Self.Syllab" Multiplicity="0..1" />
+          <End Role="ClassroomAndLabPolicies" Type="Self.ClassroomAndLabPolicy" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Syllab">
+              <PropertyRef Name="Syllabus_ID" />
+            </Principal>
+            <Dependent Role="ClassroomAndLabPolicies">
+              <PropertyRef Name="Syllabus_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Syllabus_Course">
+          <End Role="Course" Type="Self.Course" Multiplicity="0..1" />
+          <End Role="Syllab" Type="Self.Syllab" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Course">
+              <PropertyRef Name="Course_ID" />
+            </Principal>
+            <Dependent Role="Syllab">
+              <PropertyRef Name="Course_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CourseDeliverableOutputsAndRequirements_CourseDeliverableOutputsAndRequirements">
+          <End Role="CourseDeliverableOutputsAndRequirements" Type="Self.CourseDeliverableOutputsAndRequirement" Multiplicity="1" />
+          <End Role="CourseDeliverableOutputsAndRequirements1" Type="Self.CourseDeliverableOutputsAndRequirement" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="CourseDeliverableOutputsAndRequirements">
+              <PropertyRef Name="CDOR_Id" />
+            </Principal>
+            <Dependent Role="CourseDeliverableOutputsAndRequirements1">
+              <PropertyRef Name="CDOR_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CourseDeliverableOutputsAndRequirements_CourseDeliverableOutputsAndRequirements1">
+          <End Role="CourseDeliverableOutputsAndRequirements" Type="Self.CourseDeliverableOutputsAndRequirement" Multiplicity="1" />
+          <End Role="CourseDeliverableOutputsAndRequirements1" Type="Self.CourseDeliverableOutputsAndRequirement" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="CourseDeliverableOutputsAndRequirements">
+              <PropertyRef Name="CDOR_Id" />
+            </Principal>
+            <Dependent Role="CourseDeliverableOutputsAndRequirements1">
+              <PropertyRef Name="CDOR_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CourseDeliverableOutputsAndRequirements_Syllabus">
+          <End Role="Syllab" Type="Self.Syllab" Multiplicity="1" />
+          <End Role="CourseDeliverableOutputsAndRequirements" Type="Self.CourseDeliverableOutputsAndRequirement" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Syllab">
+              <PropertyRef Name="Syllabus_ID" />
+            </Principal>
+            <Dependent Role="CourseDeliverableOutputsAndRequirements">
+              <PropertyRef Name="Syllabus_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CourseOutcomes_CourseOutcomes">
+          <End Role="CourseOutcomes" Type="Self.CourseOutcome" Multiplicity="1" />
+          <End Role="CourseOutcomes1" Type="Self.CourseOutcome" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="CourseOutcomes">
+              <PropertyRef Name="CO_ID" />
+            </Principal>
+            <Dependent Role="CourseOutcomes1">
+              <PropertyRef Name="CO_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CourseOutcomes_CourseOutcomes1">
+          <End Role="CourseOutcomes" Type="Self.CourseOutcome" Multiplicity="1" />
+          <End Role="CourseOutcomes1" Type="Self.CourseOutcome" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="CourseOutcomes">
+              <PropertyRef Name="CO_ID" />
+            </Principal>
+            <Dependent Role="CourseOutcomes1">
+              <PropertyRef Name="CO_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CourseOutcomes_CourseOutcomes2">
+          <End Role="CourseOutcomes" Type="Self.CourseOutcome" Multiplicity="1" />
+          <End Role="CourseOutcomes1" Type="Self.CourseOutcome" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="CourseOutcomes">
+              <PropertyRef Name="CO_ID" />
+            </Principal>
+            <Dependent Role="CourseOutcomes1">
+              <PropertyRef Name="CO_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CourseOutcomes_Syllabus">
+          <End Role="Syllab" Type="Self.Syllab" Multiplicity="1" />
+          <End Role="CourseOutcomes" Type="Self.CourseOutcome" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Syllab">
+              <PropertyRef Name="Syllabus_ID" />
+            </Principal>
+            <Dependent Role="CourseOutcomes">
+              <PropertyRef Name="Syllabus_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_GradingSystem_GradingSystem">
+          <End Role="GradingSystem" Type="Self.GradingSystem" Multiplicity="1" />
+          <End Role="GradingSystem1" Type="Self.GradingSystem" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="GradingSystem">
+              <PropertyRef Name="GRD_Id" />
+            </Principal>
+            <Dependent Role="GradingSystem1">
+              <PropertyRef Name="GRD_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_GradingSystem_Syllabus">
+          <End Role="Syllab" Type="Self.Syllab" Multiplicity="1" />
+          <End Role="GradingSystem" Type="Self.GradingSystem" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Syllab">
+              <PropertyRef Name="Syllabus_ID" />
+            </Principal>
+            <Dependent Role="GradingSystem">
+              <PropertyRef Name="Syllabus_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_LearningPlan_LearningPlan">
+          <End Role="LearningPlan" Type="Self.LearningPlan" Multiplicity="1" />
+          <End Role="LearningPlan1" Type="Self.LearningPlan" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="LearningPlan">
+              <PropertyRef Name="LPlan_ID" />
+            </Principal>
+            <Dependent Role="LearningPlan1">
+              <PropertyRef Name="LPlan_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_LearningPlan_Syllabus">
+          <End Role="Syllab" Type="Self.Syllab" Multiplicity="1" />
+          <End Role="LearningPlan" Type="Self.LearningPlan" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Syllab">
+              <PropertyRef Name="Syllabus_ID" />
+            </Principal>
+            <Dependent Role="LearningPlan">
+              <PropertyRef Name="Syllabus_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PEO_PEO">
+          <End Role="PEO" Type="Self.PEO" Multiplicity="1" />
+          <End Role="PEO1" Type="Self.PEO" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="PEO">
+              <PropertyRef Name="Peo_ID" />
+            </Principal>
+            <Dependent Role="PEO1">
+              <PropertyRef Name="Peo_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PEO_PEO1">
+          <End Role="PEO" Type="Self.PEO" Multiplicity="1" />
+          <End Role="PEO1" Type="Self.PEO" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="PEO">
+              <PropertyRef Name="Peo_ID" />
+            </Principal>
+            <Dependent Role="PEO1">
+              <PropertyRef Name="Peo_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PEO_Syllabus">
+          <End Role="Syllab" Type="Self.Syllab" Multiplicity="1" />
+          <End Role="PEO" Type="Self.PEO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Syllab">
+              <PropertyRef Name="Syllabus_ID" />
+            </Principal>
+            <Dependent Role="PEO">
+              <PropertyRef Name="Syllabus_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ProgramOutcome_ProgramOutcome">
+          <End Role="ProgramOutcome" Type="Self.ProgramOutcome" Multiplicity="1" />
+          <End Role="ProgramOutcome1" Type="Self.ProgramOutcome" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="ProgramOutcome">
+              <PropertyRef Name="PO_Id" />
+            </Principal>
+            <Dependent Role="ProgramOutcome1">
+              <PropertyRef Name="PO_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ProgramOutcome_ProgramOutcome1">
+          <End Role="ProgramOutcome" Type="Self.ProgramOutcome" Multiplicity="1" />
+          <End Role="ProgramOutcome1" Type="Self.ProgramOutcome" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="ProgramOutcome">
+              <PropertyRef Name="PO_Id" />
+            </Principal>
+            <Dependent Role="ProgramOutcome1">
+              <PropertyRef Name="PO_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ProgramOutcome_Syllabus">
+          <End Role="Syllab" Type="Self.Syllab" Multiplicity="1" />
+          <End Role="ProgramOutcome" Type="Self.ProgramOutcome" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Syllab">
+              <PropertyRef Name="Syllabus_ID" />
+            </Principal>
+            <Dependent Role="ProgramOutcome">
+              <PropertyRef Name="Syllabus_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Revision_Revision">
+          <End Role="Revision" Type="Self.Revision" Multiplicity="1" />
+          <End Role="Revision1" Type="Self.Revision" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Revision">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Revision1">
+              <PropertyRef Name="ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Revision_Revision1">
+          <End Role="Revision" Type="Self.Revision" Multiplicity="1" />
+          <End Role="Revision1" Type="Self.Revision" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Revision">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Revision1">
+              <PropertyRef Name="ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Revision_Syllabus">
+          <End Role="Syllab" Type="Self.Syllab" Multiplicity="1" />
+          <End Role="Revision" Type="Self.Revision" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Syllab">
+              <PropertyRef Name="Syllabus_ID" />
+            </Principal>
+            <Dependent Role="Revision">
+              <PropertyRef Name="Syllabus_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Revision_User">
+          <End Role="User" Type="Self.User" Multiplicity="1" />
+          <End Role="Revision" Type="Self.Revision" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="User_ID" />
+            </Principal>
+            <Dependent Role="Revision">
+              <PropertyRef Name="User_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Room_Room">
+          <End Role="Room" Type="Self.Room" Multiplicity="1" />
+          <End Role="Room1" Type="Self.Room" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Room">
+              <PropertyRef Name="Room_ID" />
+            </Principal>
+            <Dependent Role="Room1">
+              <PropertyRef Name="Room_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Room_Room1">
+          <End Role="Room" Type="Self.Room" Multiplicity="1" />
+          <End Role="Room1" Type="Self.Room" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Room">
+              <PropertyRef Name="Room_ID" />
+            </Principal>
+            <Dependent Role="Room1">
+              <PropertyRef Name="Room_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Schedule_Room">
+          <End Role="Room" Type="Self.Room" Multiplicity="0..1" />
+          <End Role="Schedule" Type="Self.Schedule" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Room">
+              <PropertyRef Name="Room_ID" />
+            </Principal>
+            <Dependent Role="Schedule">
+              <PropertyRef Name="Room_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SciVid_SciVid">
+          <End Role="SciVid" Type="Self.SciVid" Multiplicity="1" />
+          <End Role="SciVid1" Type="Self.SciVid" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="SciVid">
+              <PropertyRef Name="SciVid_ID" />
+            </Principal>
+            <Dependent Role="SciVid1">
+              <PropertyRef Name="SciVid_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SciVid_Syllabus">
+          <End Role="Syllab" Type="Self.Syllab" Multiplicity="1" />
+          <End Role="SciVid" Type="Self.SciVid" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Syllab">
+              <PropertyRef Name="Syllabus_ID" />
+            </Principal>
+            <Dependent Role="SciVid">
+              <PropertyRef Name="Syllabus_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Syllabus_User">
+          <End Role="User" Type="Self.User" Multiplicity="0..1" />
+          <End Role="Syllab" Type="Self.Syllab" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="User_ID" />
+            </Principal>
+            <Dependent Role="Syllab">
+              <PropertyRef Name="User_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_User_User">
+          <End Role="User" Type="Self.User" Multiplicity="1" />
+          <End Role="User1" Type="Self.User" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="User_ID" />
+            </Principal>
+            <Dependent Role="User1">
+              <PropertyRef Name="User_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="DMISEntitiesxx" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Classes" EntityType="Self.Class" />
+          <EntitySet Name="ClassroomAndLabPolicies" EntityType="Self.ClassroomAndLabPolicy" />
+          <EntitySet Name="Courses" EntityType="Self.Course" />
+          <EntitySet Name="CourseDeliverableOutputsAndRequirements" EntityType="Self.CourseDeliverableOutputsAndRequirement" />
+          <EntitySet Name="CourseOutcomes" EntityType="Self.CourseOutcome" />
+          <EntitySet Name="GradingSystems" EntityType="Self.GradingSystem" />
+          <EntitySet Name="LearningPlans" EntityType="Self.LearningPlan" />
+          <EntitySet Name="PEOs" EntityType="Self.PEO" />
+          <EntitySet Name="ProgramOutcomes" EntityType="Self.ProgramOutcome" />
+          <EntitySet Name="Revisions" EntityType="Self.Revision" />
+          <EntitySet Name="Rooms" EntityType="Self.Room" />
+          <EntitySet Name="Schedules" EntityType="Self.Schedule" />
+          <EntitySet Name="SciVids" EntityType="Self.SciVid" />
+          <EntitySet Name="Syllabs" EntityType="Self.Syllab" />
+          <EntitySet Name="Users" EntityType="Self.User" />
+          <AssociationSet Name="FK_Class_Course" Association="Self.FK_Class_Course">
+            <End Role="Course" EntitySet="Courses" />
+            <End Role="Class" EntitySet="Classes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Class_Room" Association="Self.FK_Class_Room">
+            <End Role="Room" EntitySet="Rooms" />
+            <End Role="Class" EntitySet="Classes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Class_User" Association="Self.FK_Class_User">
+            <End Role="User" EntitySet="Users" />
+            <End Role="Class" EntitySet="Classes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ClassroomAndLabPolicies_Syllabus" Association="Self.FK_ClassroomAndLabPolicies_Syllabus">
+            <End Role="Syllab" EntitySet="Syllabs" />
+            <End Role="ClassroomAndLabPolicies" EntitySet="ClassroomAndLabPolicies" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Syllabus_Course" Association="Self.FK_Syllabus_Course">
+            <End Role="Course" EntitySet="Courses" />
+            <End Role="Syllab" EntitySet="Syllabs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CourseDeliverableOutputsAndRequirements_CourseDeliverableOutputsAndRequirements" Association="Self.FK_CourseDeliverableOutputsAndRequirements_CourseDeliverableOutputsAndRequirements">
+            <End Role="CourseDeliverableOutputsAndRequirements" EntitySet="CourseDeliverableOutputsAndRequirements" />
+            <End Role="CourseDeliverableOutputsAndRequirements1" EntitySet="CourseDeliverableOutputsAndRequirements" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CourseDeliverableOutputsAndRequirements_CourseDeliverableOutputsAndRequirements1" Association="Self.FK_CourseDeliverableOutputsAndRequirements_CourseDeliverableOutputsAndRequirements1">
+            <End Role="CourseDeliverableOutputsAndRequirements" EntitySet="CourseDeliverableOutputsAndRequirements" />
+            <End Role="CourseDeliverableOutputsAndRequirements1" EntitySet="CourseDeliverableOutputsAndRequirements" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CourseDeliverableOutputsAndRequirements_Syllabus" Association="Self.FK_CourseDeliverableOutputsAndRequirements_Syllabus">
+            <End Role="Syllab" EntitySet="Syllabs" />
+            <End Role="CourseDeliverableOutputsAndRequirements" EntitySet="CourseDeliverableOutputsAndRequirements" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CourseOutcomes_CourseOutcomes" Association="Self.FK_CourseOutcomes_CourseOutcomes">
+            <End Role="CourseOutcomes" EntitySet="CourseOutcomes" />
+            <End Role="CourseOutcomes1" EntitySet="CourseOutcomes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CourseOutcomes_CourseOutcomes1" Association="Self.FK_CourseOutcomes_CourseOutcomes1">
+            <End Role="CourseOutcomes" EntitySet="CourseOutcomes" />
+            <End Role="CourseOutcomes1" EntitySet="CourseOutcomes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CourseOutcomes_CourseOutcomes2" Association="Self.FK_CourseOutcomes_CourseOutcomes2">
+            <End Role="CourseOutcomes" EntitySet="CourseOutcomes" />
+            <End Role="CourseOutcomes1" EntitySet="CourseOutcomes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CourseOutcomes_Syllabus" Association="Self.FK_CourseOutcomes_Syllabus">
+            <End Role="Syllab" EntitySet="Syllabs" />
+            <End Role="CourseOutcomes" EntitySet="CourseOutcomes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_GradingSystem_GradingSystem" Association="Self.FK_GradingSystem_GradingSystem">
+            <End Role="GradingSystem" EntitySet="GradingSystems" />
+            <End Role="GradingSystem1" EntitySet="GradingSystems" />
+          </AssociationSet>
+          <AssociationSet Name="FK_GradingSystem_Syllabus" Association="Self.FK_GradingSystem_Syllabus">
+            <End Role="Syllab" EntitySet="Syllabs" />
+            <End Role="GradingSystem" EntitySet="GradingSystems" />
+          </AssociationSet>
+          <AssociationSet Name="FK_LearningPlan_LearningPlan" Association="Self.FK_LearningPlan_LearningPlan">
+            <End Role="LearningPlan" EntitySet="LearningPlans" />
+            <End Role="LearningPlan1" EntitySet="LearningPlans" />
+          </AssociationSet>
+          <AssociationSet Name="FK_LearningPlan_Syllabus" Association="Self.FK_LearningPlan_Syllabus">
+            <End Role="Syllab" EntitySet="Syllabs" />
+            <End Role="LearningPlan" EntitySet="LearningPlans" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PEO_PEO" Association="Self.FK_PEO_PEO">
+            <End Role="PEO" EntitySet="PEOs" />
+            <End Role="PEO1" EntitySet="PEOs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PEO_PEO1" Association="Self.FK_PEO_PEO1">
+            <End Role="PEO" EntitySet="PEOs" />
+            <End Role="PEO1" EntitySet="PEOs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PEO_Syllabus" Association="Self.FK_PEO_Syllabus">
+            <End Role="Syllab" EntitySet="Syllabs" />
+            <End Role="PEO" EntitySet="PEOs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ProgramOutcome_ProgramOutcome" Association="Self.FK_ProgramOutcome_ProgramOutcome">
+            <End Role="ProgramOutcome" EntitySet="ProgramOutcomes" />
+            <End Role="ProgramOutcome1" EntitySet="ProgramOutcomes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ProgramOutcome_ProgramOutcome1" Association="Self.FK_ProgramOutcome_ProgramOutcome1">
+            <End Role="ProgramOutcome" EntitySet="ProgramOutcomes" />
+            <End Role="ProgramOutcome1" EntitySet="ProgramOutcomes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ProgramOutcome_Syllabus" Association="Self.FK_ProgramOutcome_Syllabus">
+            <End Role="Syllab" EntitySet="Syllabs" />
+            <End Role="ProgramOutcome" EntitySet="ProgramOutcomes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Revision_Revision" Association="Self.FK_Revision_Revision">
+            <End Role="Revision" EntitySet="Revisions" />
+            <End Role="Revision1" EntitySet="Revisions" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Revision_Revision1" Association="Self.FK_Revision_Revision1">
+            <End Role="Revision" EntitySet="Revisions" />
+            <End Role="Revision1" EntitySet="Revisions" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Revision_Syllabus" Association="Self.FK_Revision_Syllabus">
+            <End Role="Syllab" EntitySet="Syllabs" />
+            <End Role="Revision" EntitySet="Revisions" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Revision_User" Association="Self.FK_Revision_User">
+            <End Role="User" EntitySet="Users" />
+            <End Role="Revision" EntitySet="Revisions" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Room_Room" Association="Self.FK_Room_Room">
+            <End Role="Room" EntitySet="Rooms" />
+            <End Role="Room1" EntitySet="Rooms" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Room_Room1" Association="Self.FK_Room_Room1">
+            <End Role="Room" EntitySet="Rooms" />
+            <End Role="Room1" EntitySet="Rooms" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Schedule_Room" Association="Self.FK_Schedule_Room">
+            <End Role="Room" EntitySet="Rooms" />
+            <End Role="Schedule" EntitySet="Schedules" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SciVid_SciVid" Association="Self.FK_SciVid_SciVid">
+            <End Role="SciVid" EntitySet="SciVids" />
+            <End Role="SciVid1" EntitySet="SciVids" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SciVid_Syllabus" Association="Self.FK_SciVid_Syllabus">
+            <End Role="Syllab" EntitySet="Syllabs" />
+            <End Role="SciVid" EntitySet="SciVids" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Syllabus_User" Association="Self.FK_Syllabus_User">
+            <End Role="User" EntitySet="Users" />
+            <End Role="Syllab" EntitySet="Syllabs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_User_User" Association="Self.FK_User_User">
+            <End Role="User" EntitySet="Users" />
+            <End Role="User1" EntitySet="Users" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ClassroomAndLabPolicies_ClassroomAndLabPolicies" Association="DMISModel.FK_ClassroomAndLabPolicies_ClassroomAndLabPolicies">
+            <End Role="ClassroomAndLabPolicy" EntitySet="ClassroomAndLabPolicies" />
+            <End Role="ClassroomAndLabPolicy1" EntitySet="ClassroomAndLabPolicies" />
+          </AssociationSet>
+          <EntitySet Name="Rubrics" EntityType="DMISModel.Rubric" />
+          <AssociationSet Name="FK_Rubrics_Syllab" Association="DMISModel.FK_Rubrics_Syllab">
+            <End Role="Syllab" EntitySet="Syllabs" />
+            <End Role="Rubric" EntitySet="Rubrics" />
+          </AssociationSet>
+        </EntityContainer>
+        <Association Name="FK_ClassroomAndLabPolicies_ClassroomAndLabPolicies">
+          <End Type="DMISModel.ClassroomAndLabPolicy" Role="ClassroomAndLabPolicy" Multiplicity="1" />
+          <End Type="DMISModel.ClassroomAndLabPolicy" Role="ClassroomAndLabPolicy1" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="ClassroomAndLabPolicy">
+              <PropertyRef Name="CLP_Id" />
+            </Principal>
+            <Dependent Role="ClassroomAndLabPolicy1">
+              <PropertyRef Name="CLP_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Rubric">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="outstanding" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="competent" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="marginal" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="notAcceptable" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="criteria" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Syllabus_ID" Type="Int32" />
+          <NavigationProperty Name="Syllab" Relationship="DMISModel.FK_Rubrics_Syllab" FromRole="Rubric" ToRole="Syllab" />
+        </EntityType>
+        <Association Name="FK_Rubrics_Syllab">
+          <End Type="DMISModel.Syllab" Role="Syllab" Multiplicity="0..1" />
+          <End Type="DMISModel.Rubric" Role="Rubric" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Syllab">
+              <PropertyRef Name="Syllabus_ID" />
+            </Principal>
+            <Dependent Role="Rubric">
+              <PropertyRef Name="Syllabus_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="DMISModelStoreContainer" CdmEntityContainer="DMISEntitiesxx">
+          <EntitySetMapping Name="Classes">
+            <EntityTypeMapping TypeName="DMISModel.Class">
+              <MappingFragment StoreEntitySet="Class">
+                <ScalarProperty Name="Class_ID" ColumnName="Class_ID" />
+                <ScalarProperty Name="User_ID" ColumnName="User_ID" />
+                <ScalarProperty Name="Room_ID" ColumnName="Room_ID" />
+                <ScalarProperty Name="Course_ID" ColumnName="Course_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ClassroomAndLabPolicies">
+            <EntityTypeMapping TypeName="DMISModel.ClassroomAndLabPolicy">
+              <MappingFragment StoreEntitySet="ClassroomAndLabPolicies">
+                <ScalarProperty Name="CLP_Id" ColumnName="CLP_Id" />
+                <ScalarProperty Name="CLP_desc" ColumnName="CLP_desc" />
+                <ScalarProperty Name="Syllabus_ID" ColumnName="Syllabus_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Courses">
+            <EntityTypeMapping TypeName="DMISModel.Course">
+              <MappingFragment StoreEntitySet="Course">
+                <ScalarProperty Name="Course_ID" ColumnName="Course_ID" />
+                <ScalarProperty Name="Course_Name" ColumnName="Course_Name" />
+                <ScalarProperty Name="Course_Dept" ColumnName="Course_Dept" />
+                <ScalarProperty Name="Course_Credit" ColumnName="Course_Credit" />
+                <ScalarProperty Name="Course_Equivalent" ColumnName="Course_Equivalent" />
+                <ScalarProperty Name="Course_Pre_Req" ColumnName="Course_Pre_Req" />
+                <ScalarProperty Name="Course_Co_Req" ColumnName="Course_Co_Req" />
+                <ScalarProperty Name="Course_Desc" ColumnName="Course_Desc" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CourseDeliverableOutputsAndRequirements">
+            <EntityTypeMapping TypeName="DMISModel.CourseDeliverableOutputsAndRequirement">
+              <MappingFragment StoreEntitySet="CourseDeliverableOutputsAndRequirements">
+                <ScalarProperty Name="CDOR_Id" ColumnName="CDOR_Id" />
+                <ScalarProperty Name="OutputReq" ColumnName="OutputReq" />
+                <ScalarProperty Name="OutputReqDesc" ColumnName="OutputReqDesc" />
+                <ScalarProperty Name="Cilo_Add" ColumnName="Cilo_Add" />
+                <ScalarProperty Name="ToA" ColumnName="ToA" />
+                <ScalarProperty Name="Syllabus_ID" ColumnName="Syllabus_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CourseOutcomes">
+            <EntityTypeMapping TypeName="DMISModel.CourseOutcome">
+              <MappingFragment StoreEntitySet="CourseOutcomes">
+                <ScalarProperty Name="CO_ID" ColumnName="CO_ID" />
+                <ScalarProperty Name="CO_Code" ColumnName="CO_Code" />
+                <ScalarProperty Name="CO_DESC" ColumnName="CO_DESC" />
+                <ScalarProperty Name="CO_CVA" ColumnName="CO_CVA" />
+                <ScalarProperty Name="CO_POactivated" ColumnName="CO_POactivated" />
+                <ScalarProperty Name="CO_DOLLevel" ColumnName="CO_DOLLevel" />
+                <ScalarProperty Name="Syllabus_ID" ColumnName="Syllabus_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="GradingSystems">
+            <EntityTypeMapping TypeName="DMISModel.GradingSystem">
+              <MappingFragment StoreEntitySet="GradingSystem">
+                <ScalarProperty Name="GRD_Id" ColumnName="GRD_Id" />
+                <ScalarProperty Name="GRD_outputs" ColumnName="GRD_outputs" />
+                <ScalarProperty Name="GRD_type" ColumnName="GRD_type" />
+                <ScalarProperty Name="GRD_weight" ColumnName="GRD_weight" />
+                <ScalarProperty Name="Syllabus_ID" ColumnName="Syllabus_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="LearningPlans">
+            <EntityTypeMapping TypeName="DMISModel.LearningPlan">
+              <MappingFragment StoreEntitySet="LearningPlan">
+                <ScalarProperty Name="activityL" ColumnName="activityL" />
+                <ScalarProperty Name="activityT" ColumnName="activityT" />
+                <ScalarProperty Name="LPlan_ID" ColumnName="LPlan_ID" />
+                <ScalarProperty Name="LPlan_Outcome" ColumnName="LPlan_Outcome" />
+                <ScalarProperty Name="LPlan_No_hours" ColumnName="LPlan_No_hours" />
+                <ScalarProperty Name="LPlan_Topics" ColumnName="LPlan_Topics" />
+                <ScalarProperty Name="LPlan_Asses" ColumnName="LPlan_Asses" />
+                <ScalarProperty Name="Syllabus_ID" ColumnName="Syllabus_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PEOs">
+            <EntityTypeMapping TypeName="DMISModel.PEO">
+              <MappingFragment StoreEntitySet="PEO">
+                <ScalarProperty Name="Peo_ID" ColumnName="Peo_ID" />
+                <ScalarProperty Name="Peo_CODE" ColumnName="Peo_CODE" />
+                <ScalarProperty Name="Peo_DESC" ColumnName="Peo_DESC" />
+                <ScalarProperty Name="Peo_CVA" ColumnName="Peo_CVA" />
+                <ScalarProperty Name="Syllabus_ID" ColumnName="Syllabus_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ProgramOutcomes">
+            <EntityTypeMapping TypeName="DMISModel.ProgramOutcome">
+              <MappingFragment StoreEntitySet="ProgramOutcome">
+                <ScalarProperty Name="PO_Id" ColumnName="PO_Id" />
+                <ScalarProperty Name="PO_Code" ColumnName="PO_Code" />
+                <ScalarProperty Name="PO_attr" ColumnName="PO_attr" />
+                <ScalarProperty Name="PO_Desc" ColumnName="PO_Desc" />
+                <ScalarProperty Name="PO_CVA" ColumnName="PO_CVA" />
+                <ScalarProperty Name="Syllabus_ID" ColumnName="Syllabus_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Revisions">
+            <EntityTypeMapping TypeName="DMISModel.Revision">
+              <MappingFragment StoreEntitySet="Revision">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Version" ColumnName="Version" />
+                <ScalarProperty Name="Items" ColumnName="Items" />
+                <ScalarProperty Name="User_ID" ColumnName="User_ID" />
+                <ScalarProperty Name="Rev_Date" ColumnName="Rev_Date" />
+                <ScalarProperty Name="App_Date" ColumnName="App_Date" />
+                <ScalarProperty Name="Syllabus_ID" ColumnName="Syllabus_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Rooms">
+            <EntityTypeMapping TypeName="DMISModel.Room">
+              <MappingFragment StoreEntitySet="Room">
+                <ScalarProperty Name="Room_ID" ColumnName="Room_ID" />
+                <ScalarProperty Name="Sched_ID" ColumnName="Sched_ID" />
+                <ScalarProperty Name="Room_Name_No" ColumnName="Room_Name/No" />
+                <ScalarProperty Name="Room_Bldg" ColumnName="Room_Bldg" />
+                <ScalarProperty Name="Room_Campus" ColumnName="Room_Campus" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Schedules">
+            <EntityTypeMapping TypeName="DMISModel.Schedule">
+              <MappingFragment StoreEntitySet="Schedule">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Time_S" ColumnName="Time_S" />
+                <ScalarProperty Name="Time_E" ColumnName="Time_E" />
+                <ScalarProperty Name="Day" ColumnName="Day" />
+                <ScalarProperty Name="Room_ID" ColumnName="Room_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SciVids">
+            <EntityTypeMapping TypeName="DMISModel.SciVid">
+              <MappingFragment StoreEntitySet="SciVid">
+                <ScalarProperty Name="SciVid_ID" ColumnName="SciVid_ID" />
+                <ScalarProperty Name="Core_Val" ColumnName="Core_Val" />
+                <ScalarProperty Name="Attributes" ColumnName="Attributes" />
+                <ScalarProperty Name="Syllabus_ID" ColumnName="Syllabus_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Syllabs">
+            <EntityTypeMapping TypeName="DMISModel.Syllab">
+              <MappingFragment StoreEntitySet="Syllab">
+                <ScalarProperty Name="Syllabus_ID" ColumnName="Syllabus_ID" />
+                <ScalarProperty Name="Course_ID" ColumnName="Course_ID" />
+                <ScalarProperty Name="User_ID" ColumnName="User_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Users">
+            <EntityTypeMapping TypeName="DMISModel.User">
+              <MappingFragment StoreEntitySet="User">
+                <ScalarProperty Name="User_ID" ColumnName="User_ID" />
+                <ScalarProperty Name="ID_Num" ColumnName="ID_Num" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="Role" ColumnName="Role" />
+                <ScalarProperty Name="fName" ColumnName="fName" />
+                <ScalarProperty Name="lName" ColumnName="lName" />
+                <ScalarProperty Name="mName" ColumnName="mName" />
+                <ScalarProperty Name="Cons_Time" ColumnName="Cons_Time" />
+                <ScalarProperty Name="Contact_info" ColumnName="Contact_info" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Rubrics">
+            <EntityTypeMapping TypeName="DMISModel.Rubric">
+              <MappingFragment StoreEntitySet="Rubrics">
+                <ScalarProperty Name="Syllabus_ID" ColumnName="Syllabus_ID" />
+                <ScalarProperty Name="criteria" ColumnName="criteria" />
+                <ScalarProperty Name="notAcceptable" ColumnName="notAcceptable" />
+                <ScalarProperty Name="marginal" ColumnName="marginal" />
+                <ScalarProperty Name="competent" ColumnName="competent" />
+                <ScalarProperty Name="outstanding" ColumnName="outstanding" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

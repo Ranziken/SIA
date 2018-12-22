@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="de229f4368f344569a54eed566d1a657" Name="Diagram1" ZoomLevel="88">
+        <EntityTypeShape EntityType="DMISModel.Class" Width="1.5" PointX="3" PointY="20.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="DMISModel.ClassroomAndLabPolicy" Width="1.5" PointX="8.25" PointY="8.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="DMISModel.Course" Width="1.5" PointX="0.75" PointY="20.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="DMISModel.CourseDeliverableOutputsAndRequirement" Width="1.5" PointX="8.25" PointY="10.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="DMISModel.CourseOutcome" Width="1.5" PointX="8.25" PointY="14.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="DMISModel.GradingSystem" Width="1.5" PointX="8.25" PointY="19.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="DMISModel.LearningPlan" Width="1.5" PointX="10.5" PointY="30.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="DMISModel.PEO" Width="1.5" PointX="8.25" PointY="26.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="DMISModel.ProgramOutcome" Width="1.5" PointX="8.25" PointY="30.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="DMISModel.Revision" Width="1.5" PointX="11.25" PointY="20.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="DMISModel.Room" Width="1.5" PointX="0.75" PointY="16.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="DMISModel.Schedule" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DMISModel.SciVid" Width="1.5" PointX="8.25" PointY="38.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="DMISModel.Syllab" Width="1.5" PointX="6" PointY="20.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="DMISModel.User" Width="1.5" PointX="0.75" PointY="25.25" IsExpanded="true" />
+        <AssociationConnector Association="DMISModel.FK_Class_Course" ManuallyRouted="false" />
+        <AssociationConnector Association="DMISModel.FK_Class_Room" ManuallyRouted="false" />
+        <AssociationConnector Association="DMISModel.FK_Class_User" ManuallyRouted="false" />
+        <AssociationConnector Association="DMISModel.FK_ClassroomAndLabPolicies_Syllabus" ManuallyRouted="false" />
+        <AssociationConnector Association="DMISModel.FK_Syllabus_Course" ManuallyRouted="false" />
+        <AssociationConnector Association="DMISModel.FK_CourseDeliverableOutputsAndRequirements_CourseDeliverableOutputsAndRequirements" ManuallyRouted="false" />
+        <AssociationConnector Association="DMISModel.FK_CourseDeliverableOutputsAndRequirements_CourseDeliverableOutputsAndRequirements1" ManuallyRouted="false" />
+        <AssociationConnector Association="DMISModel.FK_CourseDeliverableOutputsAndRequirements_Syllabus" ManuallyRouted="false" />
+        <AssociationConnector Association="DMISModel.FK_CourseOutcomes_CourseOutcomes" ManuallyRouted="false" />
+        <AssociationConnector Association="DMISModel.FK_CourseOutcomes_CourseOutcomes1" ManuallyRouted="false" />
+        <AssociationConnector Association="DMISModel.FK_CourseOutcomes_CourseOutcomes2" ManuallyRouted="false" />
+        <AssociationConnector Association="DMISModel.FK_CourseOutcomes_Syllabus" ManuallyRouted="false" />
+        <AssociationConnector Association="DMISModel.FK_GradingSystem_GradingSystem" ManuallyRouted="false" />
+        <AssociationConnector Association="DMISModel.FK_GradingSystem_Syllabus" ManuallyRouted="false" />
+        <AssociationConnector Association="DMISModel.FK_LearningPlan_LearningPlan" ManuallyRouted="false" />
+        <AssociationConnector Association="DMISModel.FK_LearningPlan_Syllabus" ManuallyRouted="false" />
+        <AssociationConnector Association="DMISModel.FK_PEO_PEO" ManuallyRouted="false" />
+        <AssociationConnector Association="DMISModel.FK_PEO_PEO1" ManuallyRouted="false" />
+        <AssociationConnector Association="DMISModel.FK_PEO_Syllabus" ManuallyRouted="false" />
+        <AssociationConnector Association="DMISModel.FK_ProgramOutcome_ProgramOutcome" ManuallyRouted="false" />
+        <AssociationConnector Association="DMISModel.FK_ProgramOutcome_ProgramOutcome1" ManuallyRouted="false" />
+        <AssociationConnector Association="DMISModel.FK_ProgramOutcome_Syllabus" ManuallyRouted="false" />
+        <AssociationConnector Association="DMISModel.FK_Revision_Revision" ManuallyRouted="false" />
+        <AssociationConnector Association="DMISModel.FK_Revision_Revision1" ManuallyRouted="false" />
+        <AssociationConnector Association="DMISModel.FK_Revision_Syllabus" ManuallyRouted="false" />
+        <AssociationConnector Association="DMISModel.FK_Revision_User" ManuallyRouted="false" />
+        <AssociationConnector Association="DMISModel.FK_Room_Room" ManuallyRouted="false" />
+        <AssociationConnector Association="DMISModel.FK_Room_Room1" ManuallyRouted="false" />
+        <AssociationConnector Association="DMISModel.FK_Schedule_Room" ManuallyRouted="false" />
+        <AssociationConnector Association="DMISModel.FK_SciVid_SciVid" ManuallyRouted="false" />
+        <AssociationConnector Association="DMISModel.FK_SciVid_Syllabus" ManuallyRouted="false" />
+        <AssociationConnector Association="DMISModel.FK_Syllabus_User" ManuallyRouted="false" />
+        <AssociationConnector Association="DMISModel.FK_User_User" ManuallyRouted="false" />
+        <AssociationConnector Association="DMISModel.FK_ClassroomAndLabPolicies_ClassroomAndLabPolicies" />
+        <EntityTypeShape EntityType="DMISModel.Rubric" Width="1.5" PointX="8.25" PointY="22.75" />
+        <AssociationConnector Association="DMISModel.FK_Rubrics_Syllab" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

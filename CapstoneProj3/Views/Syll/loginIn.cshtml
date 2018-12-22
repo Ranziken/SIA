@@ -1,0 +1,90 @@
+﻿@model CapstoneProj3.Models.User
+
+@{
+    ViewBag.Title = "loginIn";
+}
+
+<h2>loginIn</h2>
+
+<div>
+    <h4>User</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.User_ID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.User_ID)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ID_Num)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ID_Num)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Password)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Password)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Role)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Role)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.fName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.fName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.lName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.lName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.mName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.mName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Cons_Time)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Cons_Time)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Contact_info)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Contact_info)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
